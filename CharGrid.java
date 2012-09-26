@@ -54,7 +54,6 @@ public class CharGrid {
 	 * @return number of + in grid
 	 */
 	public int countPlus() {
-		if(g.height == 0) return 0;
 		int count = 0;
 		for(int i = 2; i < g.height - 2; i++) {
 			char ch = g.grid[i][0];
@@ -63,19 +62,25 @@ public class CharGrid {
 				char next = g.grid[i][j];
 				if(next == ch) size++;
 				else {
-					if(size > 4 && size % 2 == 1) {
-						if(checkPlus(i, j - size / 2 - 1, ch, size / 2))
-							count++;
+					if(checkPlus(i, j - size / 2 - 1, ch, size)) {
+						count++;
 					}
+					ch = next;
+					size = 1;
 				}
+			}
+			if(checkPlus(i, g.width - size / 2 - 1, ch, size)) {
+				count++;		
 			}
 		}
 		return count;
 	}
 	
 	private boolean checkPlus(int row, int col, char ch, int size) {
-		if(row < size || row + size >= g.height) return false;
-		for(int i = row - size; i <= row + size; i++) {
+		if(size < 5 || size % 2 == 0) return false;
+		int arm = size / 2;
+		if(row < arm || row + arm >= g.height) return false;
+		for(int i = row - arm; i <= row + arm; i++) {
 			if(g.grid[i][col] != ch) return false;
 		}
 		return true;

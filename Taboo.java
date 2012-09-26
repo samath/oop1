@@ -20,10 +20,13 @@ public class Taboo<T> {
 		m = new HashMap<T, HashSet<T>>();
 		T t;
 		for(int i = 0; i < rules.size() - 1; i++) {
-			if(!m.containsKey(t = rules.get(i))) {
+			if((t = rules.get(i)) != null &&
+					!m.containsKey(t)) {
 				m.put(t, new HashSet<T>());
 			}
-			m.get(t).add(rules.get(i + 1));
+			if(t != null && rules.get(i + 1) != null) {
+				m.get(t).add(rules.get(i + 1));
+			}
 		}
 	}
 	
@@ -34,7 +37,7 @@ public class Taboo<T> {
 	 * @return elements which should not follow the given element
 	 */
 	public Set<T> noFollow(T elem) {
-		 return (m.containsKey(elem)) ? m.get(elem) : new HashSet<T>();
+		 return (elem != null && m.containsKey(elem)) ? m.get(elem) : new HashSet<T>();
 	}
 	
 	/**

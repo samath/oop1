@@ -35,6 +35,23 @@ public class TabooTest {
 	
 	}
 	
+	@Test 
+	public void tabooNullTest() {
+		Taboo<Character> taboo = new Taboo<Character>(new ArrayList<Character>(
+				Arrays.asList('a', null, 'b', 'c', null, null, 'c', 'b', 'a', null)));
+		
+		assertSetsEqual(taboo.noFollow('a'), new HashSet<Character>());
+		assertSetsEqual(taboo.noFollow('b'), createSet('a', 'c'));
+		assertSetsEqual(taboo.noFollow(null), new HashSet<Character>());
+		
+		assertListsEqual(reducedList(taboo, 'a', 'c', 'b', 'd'),
+				new ArrayList<Character>(Arrays.asList('a', 'c', 'd')));
+		
+		
+		
+		
+	}
+	
 	private <T> ArrayList<T> reducedList(Taboo<T> taboo, T... objs) {
 		ArrayList<T> list = new ArrayList<T>(Arrays.asList(objs));
 		taboo.reduce(list);

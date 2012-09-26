@@ -33,5 +33,22 @@ public class AppearancesTest {
 		assertEquals(0, Appearances.sameCount(a, Arrays.asList(6)));
 	}
 	
+	@Test
+	public void testEmpty() {
+		List<Character> a = new ArrayList<Character>();
+		assertEquals(0, Appearances.sameCount(a, new ArrayList<Character>()));
+		assertEquals(0, Appearances.sameCount(a, Arrays.asList('a')));
+		assertEquals(0, Appearances.sameCount(Arrays.asList('a'), a));
+	}
+	
+	@Test
+	public void testCollections() {
+		List<Integer> a = Arrays.asList(1,2,3,4,1,3);
+		Set<Integer> b = new HashSet<Integer>();
+		b.addAll(Arrays.asList(1,1,2,3,5));
+		assertEquals(2, Appearances.sameCount(a,b));
+		assertEquals(2, Appearances.sameCount(b,a));
+	}
+	
 	// Add more tests
 }
