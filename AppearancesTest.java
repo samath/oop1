@@ -46,8 +46,8 @@ public class AppearancesTest {
 		List<Integer> a = Arrays.asList(1,2,3,4,1,3);
 		Set<Integer> b = new HashSet<Integer>();
 		b.addAll(Arrays.asList(1,1,2,3,5));
-		assertEquals(2, Appearances.sameCount(a,b));
-		assertEquals(2, Appearances.sameCount(b,a));
+		assertEquals(1, Appearances.sameCount(a,b));
+		assertEquals(1, Appearances.sameCount(b,a));
 	}
 	
 	// Add more tests

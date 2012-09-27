@@ -33,12 +33,12 @@ public class TetrisGridTest {
 		boolean[][] before = {
 				{true, true, false, false, true, true, },
 				{true, false, true, false, true, false, },
-				{true, true, false, true, true, true }
+				{true, true, false, false, true, true }
 		};
 		boolean[][] after = {
 				{true, false, false, true, false, false, },
 				{false, true, false, false, false, false, },
-				{true, false, true, true, false, false }
+				{true, false, false, true, false, false }
 		};
 
 		TetrisGrid tetris = new TetrisGrid(before);
