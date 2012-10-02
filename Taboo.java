@@ -20,12 +20,13 @@ public class Taboo<T> {
 		m = new HashMap<T, HashSet<T>>();
 		T t;
 		for(int i = 0; i < rules.size() - 1; i++) {
-			if((t = rules.get(i)) != null &&
-					!m.containsKey(t)) {
-				m.put(t, new HashSet<T>());
-			}
-			if(t != null && rules.get(i + 1) != null) {
-				m.get(t).add(rules.get(i + 1));
+			if((t = rules.get(i)) != null) {
+				if(!m.containsKey(t)) {
+					m.put(t,  new HashSet<T>());
+				}
+				if(rules.get(i + 1) != null) {
+					m.get(t).add(rules.get(i + 1));
+				}
 			}
 		}
 	}

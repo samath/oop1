@@ -52,6 +52,7 @@ public class StringCode {
 		return str;
 	}
 	
+	/** Return a String containing 'reps' copies of ch. */	
 	private static String copy(int reps, char ch) {
 		String s = "";
 		for(int i = 0; i < reps; i++) {
@@ -67,7 +68,7 @@ public class StringCode {
 	 * Compute this in linear time using a HashSet. Len will be 1 or more.
 	 */
 	public static boolean stringIntersect(String a, String b, int len) {
-		if(len <= 0) return false;
+		if(len <= 0) return true;
 		int alen = a.length(), blen = b.length();
 		Set<String> s = new HashSet<String>();
 		for(int i = 0; i < alen - len + 1; i++) {

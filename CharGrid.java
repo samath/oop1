@@ -4,6 +4,7 @@
 
 public class CharGrid {
 	
+	/* Nested class to contain grid as well as dimensions. */
 	private class Grid {
 		private char[][] grid;
 		private int width;
@@ -76,6 +77,11 @@ public class CharGrid {
 		return count;
 	}
 	
+	/**
+	 * Check if there is a plus centered at (row, col) with character
+	 * ch and the given size.
+	 * Assumes that there are size consecutive ch's in the given row.
+	 */
 	private boolean checkPlus(int row, int col, char ch, int size) {
 		if(size < 5 || size % 2 == 0) return false;
 		int arm = size / 2;

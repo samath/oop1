@@ -21,6 +21,10 @@ public class Appearances {
 		return count;
 	}
 	
+	/**
+	 * Process collection and return a map from element to count.
+	 * @param c collection
+	 */
 	private static <T> Map<T, Integer> getCounts(Collection<T> c) {
 		Map<T, Integer> valueMap = new HashMap<T, Integer>();
 		for(T elem : c) {

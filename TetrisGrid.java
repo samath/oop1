@@ -44,6 +44,7 @@ public class TetrisGrid {
 		}
 	}
 	
+	/** Returns true if the selected row is full. */
 	private boolean checkRow(int row) { 
 		for(int i = 0; i < g.width; i++) {
 			if(!g.grid[i][row]) { 
@@ -52,7 +53,9 @@ public class TetrisGrid {
 		}
 		return true;
 	}
-	
+	 /** Copy row src into row dest. If src is greater than the
+	  * height of the grid, fill with false.
+	  */
 	private void copyRow(int dest, int src) {
 		for(int i = 0; i < g.width; i++) {
 			g.grid[i][dest] = (src < g.height) ? g.grid[i][src] : false;  
